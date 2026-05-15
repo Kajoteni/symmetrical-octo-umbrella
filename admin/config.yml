@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    files:
+      - label: "Posts"
+        name: "posts"
+        file: "posts.json"
+        description: "Blog posts list"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Excerpt", name: "excerpt", widget: "text"}
+              - {label: "Body", name: "body", widget: "markdown"}
+              - {label: "Author", name: "author", widget: "string", default: "Kajoteni"}
+              - {label: "Category", name: "category", widget: "select", options: ["life", "theology", "politics"]}

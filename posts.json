@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "date": "2024-05-22",
+      "title": "The Work We Do",
+      "excerpt": "\"Your work is going to fill a large part of your life and the only way to be truly satisfied is to do what you believe is great work\"",
+      "body": "Steve Jobs said it from a stage in Cupertino, and the line has been quoted so many times since that it almost wears thin. But it shouldn't.\n\nWork is not what you do between the parts of your life that matter. For most of us it is the part that matters — the place where our hours pile up, where our small daily choices compound into the people we become.\n\nIf the work is shallow, the life around it tends to flatten too. If the work is dishonest, the dishonesty spreads. If the work is great — by which I mean meaningful to you, faithful to what you actually believe — then even the ordinary parts of the day are touched by it.\n\nThis is why I write. Not because I have answers, but because writing forces me to take my own thinking seriously enough to put it on a page. The essays here are my attempt at great work in the small. The pursuit is never finished.",
+      "author": "Kajoteni",
+      "category": "life"
+    },
+    {
+      "id": 2,
+      "date": "2025-03-04",
+      "title": "Cycles and political affairs",
+      "excerpt": "\"those in my generation who I know have an interest in politics, sadly, turn out not to be a silver lining but are just the regurgitated images of the leaders we don't want.\"",
+      "body": "I keep waiting for the break. The clean rupture where a generation looks at the leaders they inherited and says, \"not this — not again.\" It hasn't come.\n\nWhat I see instead, among the politically ambitious people my age, is mimicry. The same posture, the same appetite for theatre over substance, the same easy contempt for the people they claim to serve. The aesthetics are younger but the engine is the same.\n\nA cycle is not broken by being repeated more enthusiastically. It is broken by people willing to be inconvenient — to themselves first, then to the systems that promised them a turn at the trough.\n\nI don't know yet what that looks like in practice. I am writing this partly to figure it out. But I know it does not look like the louder, slicker, more telegenic version of what came before.",
+      "author": "Kajoteni",
+      "category": "politics"
+    }
+  ]
+}
