@@ -409,7 +409,7 @@
   // ───────── storage ─────────
   async function loadPosts() {
     try {
-      const r = await fetch('posts.json');
+      const r = await fetch('/posts.json');
       const data = await r.json();
       posts = data.posts || [];
     } catch (e) {
