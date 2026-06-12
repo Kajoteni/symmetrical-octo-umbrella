@@ -250,12 +250,20 @@
     line-height: 1.3;
     text-align: center;
     color: var(--ink);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-weight: 400;
   }
+  .reader__byline {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin-bottom: 40px;
+  }
+  .reader__byline img { width: 36px; height: 36px; border-radius: 100px; }
+  .reader__byline-meta { display: flex; flex-direction: column; text-align: left; }
+  .reader__byline-name { font-family: "Orbitron", serif; font-size: 11px; color: var(--ink); letter-spacing: 1px; }
+  .reader__byline-date { font-size: 10px; color: var(--mute); margin-top: 2px; letter-spacing: 1px; }
   .reader__divider {
     width: 1px;
-    height: 140px;
+    height: 100px;
     background-color: var(--ink);
     margin: 0 auto 50px;
   }
@@ -472,6 +480,13 @@
     readerContent.innerHTML = `
       <button class="reader__home-link" id="readerHome">home</button>
       <h1 class="reader__title">${esc(p.title).replace(/\n/g, '<br/>')}</h1>
+      <div class="reader__byline">
+        <img src="${LOGO_SRC}" alt="" />
+        <div class="reader__byline-meta">
+          <span class="reader__byline-name">${esc(p.author || 'Kajoteni')}</span>
+          <span class="reader__byline-date">${fmtDate(p.date)}</span>
+        </div>
+      </div>
       <div class="reader__divider"></div>
       <div class="reader__body">${body}</div>
     `;
@@ -482,11 +497,33 @@
     document.body.style.overflow = 'hidden';
     window.scrollTo({ top: 0 });
     readerOverlay.scrollTo({ top: 0 });
+    
+    // Update URL for direct linking
+    if (new URLSearchParams(window.location.search).get('post') !== String(id)) {
+      history.pushState({ postId: id }, '', '?post=' + id);
+    }
   }
   function closeReader() {
     readerOverlay.classList.remove('is-open');
     document.body.style.overflow = '';
+    
+    // Clear URL
+    if (window.location.search.includes('post=')) {
+      history.pushState(null, '', window.location.pathname);
+    }
   }
+  
+  // Handle back button in browser
+  window.addEventListener('popstate', (e) => {
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+    if (postId) {
+      openReader(postId);
+    } else {
+      readerOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  });
 
   // event delegation for Read more buttons
   document.getElementById('writings').addEventListener('click', (e) => {
@@ -505,7 +542,17 @@
   });
 
   // ───────── init ─────────
-  (async () => { await loadPosts(); render(); })();
+  (async () => { 
+    await loadPosts(); 
+    render(); 
+    
+    // Check if we have a direct link to a post
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get('post');
+    if (postId) {
+      openReader(postId);
+    }
+  })();
 
   // ───────── Netlify Identity ─────────
   if (window.netlifyIdentity) {
