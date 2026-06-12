@@ -60,10 +60,17 @@ posts.forEach(post => {
   const title = (post.title || '').replace(/"/g, '&quot;');
   const excerpt = (post.excerpt || '').replace(/"/g, '&quot;');
   
+  let image = '/images/logo.jpg';
+  if (post.category === 'politics') {
+    image = '/images/lumumba.jpg';
+  } else if (post.category === 'theology') {
+    image = '/images/jesus.jpg';
+  }
+  
   const ogTags = `
-<meta property="og:title" content="${title} — quester" />
+<meta property="og:title" content="Kajoteni — ${title}" />
 <meta property="og:description" content="${excerpt}" />
-<meta property="og:image" content="/images/logo.jpg" />
+<meta property="og:image" content="${image}" />
 <meta name="twitter:card" content="summary_large_image" />
 <script>
   // Redirect /post/:id/ to /?post=:id so the SPA can handle it
