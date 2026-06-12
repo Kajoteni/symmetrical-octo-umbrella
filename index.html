@@ -253,14 +253,6 @@
     margin-bottom: 30px;
     font-weight: 400;
   }
-  .reader__byline {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    margin-bottom: 40px;
-  }
-  .reader__byline img { width: 36px; height: 36px; border-radius: 100px; }
-  .reader__byline-meta { display: flex; flex-direction: column; text-align: left; }
-  .reader__byline-name { font-family: "Orbitron", serif; font-size: 11px; color: var(--ink); letter-spacing: 1px; }
-  .reader__byline-date { font-size: 10px; color: var(--mute); margin-top: 2px; letter-spacing: 1px; }
   .reader__divider {
     width: 1px;
     height: 100px;
@@ -480,13 +472,6 @@
     readerContent.innerHTML = `
       <button class="reader__home-link" id="readerHome">home</button>
       <h1 class="reader__title">${esc(p.title).replace(/\n/g, '<br/>')}</h1>
-      <div class="reader__byline">
-        <img src="${LOGO_SRC}" alt="" />
-        <div class="reader__byline-meta">
-          <span class="reader__byline-name">${esc(p.author || 'Kajoteni')}</span>
-          <span class="reader__byline-date">${fmtDate(p.date)}</span>
-        </div>
-      </div>
       <div class="reader__divider"></div>
       <div class="reader__body">${body}</div>
     `;
