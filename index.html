@@ -484,8 +484,8 @@
     readerOverlay.scrollTo({ top: 0 });
     
     // Update URL for direct linking
-    if (new URLSearchParams(window.location.search).get('post') !== String(id)) {
-      history.pushState({ postId: id }, '', '?post=' + id);
+    if (!window.location.pathname.includes('/post/' + id)) {
+      history.pushState({ postId: id }, '', '/post/' + id + '/');
     }
   }
   function closeReader() {
@@ -493,8 +493,8 @@
     document.body.style.overflow = '';
     
     // Clear URL
-    if (window.location.search.includes('post=')) {
-      history.pushState(null, '', window.location.pathname);
+    if (window.location.pathname.includes('/post/')) {
+      history.pushState(null, '', '/');
     }
   }
   
